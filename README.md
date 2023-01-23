@@ -33,11 +33,38 @@ Notes:
 
 ## What it does
 
-- Each time tests run, the contents of `db/seeds.rb` will be loaded into the test database.
+- When tests run, the contents of `db/seeds.rb` will be loaded into the test database.
 - To improve performance, keeps a hash of everything your app's `db/` folder in the `.seeds_hash` file. This way, seeds are only reloaded into the database if you change your seeds file or your schema.
 - Adds a `parallel_setup` hook, so if you run parallel tests, seeds will be loaded correctly. (This is needed because parallel databases [are truncated before each run](https://github.com/rails/rails/issues/46820).)
 
-## I thought seeds are for development, not testing!
+## How do I access seed data in my test?
+
+Just like anything else in the database...
+
+```ruby
+user = User.find_by(name: "Alex")
+```
+
+Or if you like, define helper methods for easy lookup.
+
+```ruby
+module SeedFixtureLookups
+  def user_alex
+    @user_alex ||= User.find_by(name: "Alex")
+  end
+end
+
+class ActiveSupport::TestCase
+  include SeedFixtureLookups
+end
+
+# in a test...
+test "alex exists" do
+  assert_not_nil user_alex
+end
+```
+
+## I thought seeds are for development, not testing!?
 
 Not everyone agrees this is a good idea. And for many apps, it's not! But for some apps it is a very neat way of writing a robust test suite. If your app is one of those, give this a try.
 
