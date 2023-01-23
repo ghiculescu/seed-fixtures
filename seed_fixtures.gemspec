@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.summary = "Use seeds.rb as test fixtures"
   spec.homepage = "https://github.com/ghiculescu/seed-fixtures"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 2.6"
+  spec.required_ruby_version = ">= 2.7"
 
   spec.metadata = {
     "bug_tracker_uri" => "https://github.com/ghiculescu/seed-fixtures/issues",
