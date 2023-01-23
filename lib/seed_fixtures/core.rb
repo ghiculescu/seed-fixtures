@@ -6,7 +6,9 @@ module SeedFixtures
 
     module ClassMethods
       def fixtures_from_seeds
-        ActiveRecord::TestFixtures.prepend SeedFixtures::Implementation
+        ActiveSupport.on_load(:active_support_test_case) do
+          prepend SeedFixtures::Implementation
+        end
 
         parallelize_setup { SeedFixtures::Implementation.truncate_and_seed }
       end
