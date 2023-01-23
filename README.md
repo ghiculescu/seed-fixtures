@@ -4,38 +4,45 @@
 [![CI](https://github.com/ghiculescu/seed-fixtures/actions/workflows/ci.yml/badge.svg)](https://github.com/ghiculescu/seed-fixtures/actions/workflows/ci.yml)
 [![Code Climate](https://codeclimate.com/github/ghiculescu/seed-fixtures/badges/gpa.svg)](https://codeclimate.com/github/ghiculescu/seed-fixtures)
 
-TODO: Description of this gem goes here.
+Use your `seeds.rb` as fixtures when running tests.
 
----
-
-- [Quick start](#quick-start)
-- [Support](#support)
-- [License](#license)
-- [Code of conduct](#code-of-conduct)
-- [Contribution guide](#contribution-guide)
+Currently only Rails 7 is supported. PRs to support older Rails versions are welcome!
 
 ## Quick start
 
-```
-$ gem install seed_fixtures
-```
+1. Add `seed_fixtures` to the `test` group of your Gemfile, then run `bundle install`.
+
+2. In your `test_helper.rb`:
 
 ```ruby
-require "seed_fixtures"
+class ActiveSupport::TestCase
+  # Add this line:
+  fixtures_from_seeds
+
+  # Comment out or remove this line:
+  # fixtures :all
+end
 ```
 
-## Support
+Notes:
 
-If you want to report a bug, or have ideas, feedback or questions about the gem, [let me know via GitHub issues](https://github.com/ghiculescu/seed-fixtures/issues/new) and I will do my best to provide a helpful answer. Happy hacking!
+- You cannot use standard Rails fixtures if you are using this gem. Make sure you remove the `fixtures` call that's included in `test_helper.rb` by default!
+- Ensure your `test_helper.rb` includes this: `require "rails/test_help"`.
+
+3. Add `.seeds_hash` to your `.gitignore` file.
+
+## What it does
+
+- Each time tests run, the contents of `db/seeds.rb` will be loaded into the test database.
+- To improve performance, keeps a hash of everything your app's `db/` folder in the `.seeds_hash` file. This way, seeds are only reloaded into the database if you change your seeds file or your schema.
+- Adds a `parallel_setup` hook, so if you run parallel tests, seeds will be loaded correctly. (This is needed because parallel databases [are truncated before each run](https://github.com/rails/rails/issues/46820).)
+
+## I thought seeds are for development, not testing!
+
+Not everyone agrees this is a good idea. And for many apps, it's not! But for some apps it is a very neat way of writing a robust test suite. If your app is one of those, give this a try.
+
+If you're interested, [here's a discusion that touches on pros and cons of this approach](https://discuss.rubyonrails.org/t/should-dbprepare-also-call-db-seed-by-default/74835).
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](LICENSE.txt).
-
-## Code of conduct
-
-Everyone interacting in this project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
-
-## Contribution guide
-
-Pull requests are welcome!

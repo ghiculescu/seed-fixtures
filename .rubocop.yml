@@ -108,3 +108,9 @@ Style/StringLiterals:
 
 Style/TrivialAccessors:
   AllowPredicates: true
+
+Style/ClassVars:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false

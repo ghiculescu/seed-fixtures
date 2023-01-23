@@ -26,3 +26,4 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       - run: bundle exec rake test
+      - run: PARALLEL_WORKERS=2 bundle exec rake test
