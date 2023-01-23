@@ -2,7 +2,6 @@
 
 [![Gem Version](https://badge.fury.io/rb/seed_fixtures.svg)](https://rubygems.org/gems/seed_fixtures)
 [![CI](https://github.com/ghiculescu/seed-fixtures/actions/workflows/ci.yml/badge.svg)](https://github.com/ghiculescu/seed-fixtures/actions/workflows/ci.yml)
-[![Code Climate](https://codeclimate.com/github/ghiculescu/seed-fixtures/badges/gpa.svg)](https://codeclimate.com/github/ghiculescu/seed-fixtures)
 
 Use your `seeds.rb` as fixtures when running tests.
 
