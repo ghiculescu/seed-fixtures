@@ -10,3 +10,5 @@
 /Gemfile.lock
 
 .seeds_hash
+/test/internal/db/combustion_test.sqlite
+/test/reports
