@@ -11,4 +11,6 @@ gem "rubocop-packaging", "0.5.2"
 gem "rubocop-performance", "1.15.2"
 gem "rubocop-rake", "0.6.0"
 
+gem "combustion"
 gem "debug"
+gem "sqlite3"
