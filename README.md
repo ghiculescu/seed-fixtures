@@ -5,6 +5,8 @@
 
 Use your `seeds.rb` as fixtures when running tests.
 
+Read the back story of this gem: https://ghiculescu.substack.com/p/using-realistic-development-and-test
+
 Currently only Rails 7 is supported. PRs to support older Rails versions are welcome!
 
 ## Quick start
@@ -67,7 +69,7 @@ end
 
 Not everyone agrees this is a good idea. And for many apps, it's not! But for some apps it is a very neat way of writing a robust test suite. If your app is one of those, give this a try.
 
-If you're interested, [here's a discusion that touches on pros and cons of this approach](https://discuss.rubyonrails.org/t/should-dbprepare-also-call-db-seed-by-default/74835).
+There's more back story on the gem here: https://ghiculescu.substack.com/p/using-realistic-development-and-test
 
 ## License
 
