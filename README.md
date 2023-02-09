@@ -49,7 +49,7 @@ Or if you like, define helper methods for easy lookup.
 ```ruby
 module SeedFixtureLookups
   def user_alex
-    @user_alex ||= User.find_by(name: "Alex")
+    @user_alex ||= User.where(name: "Alex").sole
   end
 end
 
