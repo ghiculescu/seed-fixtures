@@ -7,7 +7,7 @@ Use your `seeds.rb` as fixtures when running tests.
 
 Read the back story of this gem: https://ghiculescu.substack.com/p/using-realistic-development-and-test
 
-Currently only Rails 7 is supported. PRs to support older Rails versions are welcome!
+Currently only Rails 7 and up is supported. PRs to support older Rails versions are welcome!
 
 ## Quick start
 
@@ -67,7 +67,7 @@ end
 
 ## I thought seeds are for development, not testing!?
 
-Not everyone agrees this is a good idea. And for many apps, it's not! But for some apps it is a very neat way of writing a robust test suite. If your app is one of those, give this a try.
+Not everyone agrees this gem is a good idea. And for many apps, it's not! But for some apps it is a very neat way of writing a robust test suite. If your app is one of those, give this a try.
 
 There's more back story on the gem here: https://ghiculescu.substack.com/p/using-realistic-development-and-test
 
